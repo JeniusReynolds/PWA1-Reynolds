@@ -3,8 +3,9 @@
  * Date: 4/09/13
 
  Assignment 1
- Part 1/3 of series
+ Part 2/3 of series
  Updated Key - By Jonathan Reynolds
+ 7/18/2014
 */
 
 // Main Function that will be running when the site loads.
@@ -13,15 +14,15 @@
     console.log("FIGHT!!!");
 
     //Variable being created for each player name
-    var playerOneName = "Spiderman";
-    var playerTwoName = "Batman";
+    var playerOne = ['Spiderman',20,100];
+    var playerTwo = ["Batman",20,100];
 
     //Variable Indicating each player's damage meter
-    var player1Damage = 20;
+    //var player1Damage = 20;
     var player2Damage = 20;
 
     //Variable indicating each player's initial health level.
-    var playerOneHealth = 100;
+    //var playerOneHealth = 100;
     var playerTwoHealth = 100;
 
     //Starting Round number variable
