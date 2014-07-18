@@ -19,11 +19,11 @@
 
     //Variable Indicating each player's damage meter
     //var player1Damage = 20;
-    var player2Damage = 20;
+    //var player2Damage = 20;
 
     //Variable indicating each player's initial health level.
     //var playerOneHealth = 100;
-    var playerTwoHealth = 100;
+    //var playerTwoHealth = 100;
 
     //Starting Round number variable
     var round=0;
@@ -31,23 +31,23 @@
 	//Function that will start the "Fighting" Sequence.
     function fight(){
     	//Alert that will indicate each player's name and health level at the start of each round.
-        alert(playerOneName+":"+playerOneHealth+"  *START*  "+playerTwoName+":"+playerTwoHealth);
+        alert(playerOne[0]+":"+playerOne[2]+"  *START*  "+playerTwo[0]+":"+playerTwo[2]);
         for (var i = 0; i < 10; i++)
         {
             //random formula is - Math.floor(Math.random() * (max - min) + min);
             //Variable indicating what the minimum damage is for each player
-            var minDamage1 = player1Damage * .5;
-            var minDamage2 = player2Damage * .5;
+            var minDamage1 = playerOne[1] * .5;
+            var minDamage2 = playerTwo[1] * .5;
             //Variables indicating what the final deduction amounts will be for the individual player's health
-            var f1 = Math.floor(Math.random()*(player1Damage-minDamage1)+minDamage1);
-            var f2 = Math.floor(Math.random()*(player2Damage-minDamage2)+minDamage2);
+            var f1 = Math.floor(Math.random()*(playerOne[1]-minDamage1)+minDamage1);
+            var f2 = Math.floor(Math.random()*(playerTwo[1]-minDamage2)+minDamage2);
 
             //Players health actually being deducted after the random amount is taken.
-            playerOneHealth-=f1;
-            playerTwoHealth-=f2;
+            playerOne[2]-=f1;
+            playerTwo[2]-=f2;
 			
 			//The Printing of the Player's Name and Health after the damages
-            console.log(playerOneName+": "+playerOneHealth + " " + playerTwoName+":"+playerTwoHealth);
+            console.log(playerOne[0]+": "+playerOne[2] + " " + playerTwo[0]+":"+playerTwo[2]);
 
             //Variable to check to see if there is a winner
             var result = winnerCheck();
@@ -57,7 +57,7 @@
             {
             //IF there is no winner then there will be an alert prompt displaying the player and their health along with the round number
                 round++;
-                alert(playerOneName+":"+playerOneHealth+"  *ROUND "+round+" OVER"+"*  "+playerTwoName+":"+playerTwoHealth);
+                alert(playerOne[0]+":"+playerOne[2]+"  *ROUND "+round+" OVER"+"*  "+playerTwo[0]+":"+playerTwo[2]);
 
             } else{
                 alert(result);
@@ -71,16 +71,16 @@
     		//Defining the initial string value for the "result" value as "no winner"
         var result="no winner";
         	//If player one's health is less than 1 and player two's health is less than one then it will run the result of "You both Die"
-        if (playerOneHealth<1 && playerTwoHealth<1)
+        if (playerOne[2]<1 && playerTwo[2]<1)
         {
             result = "You Both Die";
             //Otherwise if Player One's health is less than 1 then Player 2 wins
-        } else if(playerOneHealth<1){
-            result =playerTwoName+" WINS!!!"
+        } else if(playerOne[2]<1){
+            result =playerTwo[0]+" WINS!!!"
             //This is the opposite where Player 1 will win if the previous two if statements are false
-        } else if (playerTwoHealth<1)
+        } else if (playerTwo[2]<1)
         {
-            result = playerOneName+" WINS!!!"
+            result = playerOne[0]+" WINS!!!"
         };
        return result;
     };
