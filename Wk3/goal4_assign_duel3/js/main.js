@@ -56,61 +56,71 @@
 	//Function that will start the "Fighting" Sequence.
     function fight(){
     	//Alert that will indicate each player's name and health level at the start of each round.
-        alert(playerOne[0]+":"+playerOne[2]+"  *START*  "+playerTwo[0]+":"+playerTwo[2]);
-        for (var i = 0; i < 10; i++)
-        {
+        //alert(playerOne[0]+":"+playerOne[2]+"  *START*  "+playerTwo[0]+":"+playerTwo[2]);
+
+        fighter1_txt.innerHTML = fighters[0].name + ': ' + fighters[0].health;
+        fighter2_txt.innerHTML = fighters[1].name + ': ' + fighters[1].health;
+
             //random formula is - Math.floor(Math.random() * (max - min) + min);
-            //Variable indicating what the minimum damage is for each player
-            var minDamage1 = playerOne[1] * .5;
-            var minDamage2 = playerTwo[1] * .5;
-            //Variables indicating what the final deduction amounts will be for the individual player's health
-            var f1 = Math.floor(Math.random()*(playerOne[1]-minDamage1)+minDamage1);
-            var f2 = Math.floor(Math.random()*(playerTwo[1]-minDamage2)+minDamage2);
+            //Variable indicating what the damage will be
+            var f1 = Math.floor(Math.random() * fighters[0].damage + fighters[0].damage *.5);
+            var f2 = Math.floor(Math.random() * fighters[1].damage + fighters[1].damage *.5);
+
 
             //Players health actually being deducted after the random amount is taken.
-            playerOne[2]-=f1;
-            playerTwo[2]-=f2;
+            fighters[0].health-=f1;
+            fighters[1].health-=f2;
 			
 			//The Printing of the Player's Name and Health after the damages
-            console.log(playerOne[0]+": "+playerOne[2] + " " + playerTwo[0]+":"+playerTwo[2]);
+            console.log(fighters[0].name + ': ' + fighters[0].health + " " + fighters[1].name + ': ' + fighters[1].health);
 
             //Variable to check to see if there is a winner
             var result = winnerCheck();
-            //beginning of an If/Else statement that will check to see if there is a winner. The statement is checking the results of the winnerCheck function that was ran in the above line.
+
             console.log(result);
-            if (result==="no winner")
+
+            round_txt.innerHTML = "Round " + round + " Results: " + result;
+            round++;
+            if (result==="No Winner")
             {
-            //IF there is no winner then there will be an alert prompt displaying the player and their health along with the round number
-                round++;
-                alert(playerOne[0]+":"+playerOne[2]+"  *ROUND "+round+" OVER"+"*  "+playerTwo[0]+":"+playerTwo[2]);
+
+                //alert(playerOne[0]+":"+playerOne[2]+"  *ROUND "+round+" OVER"+"*  "+playerTwo[0]+":"+playerTwo[2]);
+
+                fighter1_txt.innerHTML = fighters[0].name + ': ' + fighters[0].health;
+                fighter2_txt.innerHTML = fighters[1].name + ': ' + fighters[1].health;
+
 
             } else{
-                alert(result);
-                break;
-            };
+                //alert(result);
+                fighter1_txt.innerHTML = result;
+                fighter2_txt.innerHTML = "";
 
-          };
-    };
+                //break;
+                //Cancel the Event Listner
+                button.removeEventListener("click", fight, false);
+
+                document.querySelector('.buttonblue').innerHTML = 'Done';
+            }
+
+
+    }
 			//The creation of the function used to check to see if there is a winner yet
     function winnerCheck(){
     		//Defining the initial string value for the "result" value as "no winner"
-        var result="no winner";
+        var result="No Winner";
         	//If player one's health is less than 1 and player two's health is less than one then it will run the result of "You both Die"
-        if (playerOne[2]<1 && playerTwo[2]<1)
+        if (fighters[0].health < 1 && fighters[1].health < 1)
         {
             result = "You Both Die";
             //Otherwise if Player One's health is less than 1 then Player 2 wins
-        } else if(playerOne[2]<1){
-            result =playerTwo[0]+" WINS!!!"
+        } else if(fighters[0].health < 1){
+            result = fighters[1].name+" WINS!!!"
             //This is the opposite where Player 1 will win if the previous two if statements are false
-        } else if (playerTwo[2]<1)
+        } else if (fighters[1].health < 1)
         {
-            result = playerOne[0]+" WINS!!!"
-        };
+            result = fighters[0].name+" WINS!!!"
+        }
        return result;
-    };
-
-    /*******  The program gets started below *******/
-    fight();
+    }
 
 })();
