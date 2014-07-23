@@ -31,8 +31,27 @@
     //var playerOneHealth = 100;
     //var playerTwoHealth = 100;
 
+    //Using an array with 2 fighter objects to contain fighter information
+    var fighters = [
+        {
+            name:'Kabal',
+            damage:20,
+            health:100
+        },
+        {
+            name:'Kratos',
+            damage:20,
+            health:100
+        }
+    ];
+
     //Starting Round number variable
-    var round=0;
+    var round= 1;
+
+    //Adding innerHTML Text
+    round_txt.innerHTML = "Click Fight Button to Start";
+    fighter1_txt.innerHTML = fighters[0].name + ': ' + fighters[0].health;
+    fighter2_txt.innerHTML = fighters[1].name + ': ' + fighters[1].health;
 
 	//Function that will start the "Fighting" Sequence.
     function fight(){
