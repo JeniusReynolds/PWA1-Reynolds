@@ -19,22 +19,19 @@
 		// Trim whitespace from start and end of search query
 		while(query.charAt(0) === " "){
 			query = query.substring(1, query.length);
-		}
+		};
 		while(query.charAt(query.length-1) === "") {
             query = query.substring(0, query.length - 1);
-
-
+            };
             // Check search length, must have 3 characters
             if (query.length < 3) {
                 alert("Your search query is too small, try again.");
-                console.log("Your search query is too small, try again.");
-
                 // (DO NOT FIX THE LINE DIRECTLY BELOW)
                 searchInput.focus();
                 return;
-            }
+            };
 
-        }
+
 		search(query);
 	};
 	
@@ -65,11 +62,11 @@
                 var compare = dbitem.indexOf(qitem);
                 if (compare !== -1) {
                     results.push(db[i]);
-                }
+                };
 
-            }
+            };
 
-        }
+        };
 		
 		results.sort();
 		
@@ -78,7 +75,7 @@
 			noMatch();
 		}else{
 			showMatches(results);
-		}
+		};
 	};
 	
 	// Put "No Results" message into page (DO NOT FIX THE HTML VAR NOR THE innerHTML)
@@ -94,7 +91,7 @@
 	var showMatches = function(results){
 		
 		// THE NEXT 4 LINES ARE CORRECT.
-		var html = '<p>Results</p>', 
+		var html = '<p>Results</p>',
 			title, 
 			url
 		;
@@ -104,7 +101,7 @@
 		
 			// title of video ends with pipe
 			// pull the title's string using index numbers
-			titleEnd = results[i].indexOf('|');
+		var	titleEnd = results[i].indexOf('|');
 			title = results[i].substr(0, titleEnd);
 			
 			// pull the video url after the title
