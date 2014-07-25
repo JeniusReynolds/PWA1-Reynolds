@@ -96,7 +96,7 @@
                 fighter2_txt.innerHTML = "";
 
                 //break;
-                //Cancel the Event Listner
+                //Cancel the Event Listener
                 button.removeEventListener("click", fight, false);
 
                 document.querySelector('.buttonblue').innerHTML = 'Done';
